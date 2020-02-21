@@ -1,7 +1,7 @@
 const graphql = require('graphql');
 const _= require('lodash');
 const {books, authors} = require('./dummyData');
-const { BookType, AuthorType } = require('./types/Types');
+const Types = require('./types/Types');
 
 const { 
     GraphQLObjectType,
@@ -13,7 +13,7 @@ const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
         book: {
-            type: BookType,
+            type: Types.BookType,
             args: {id: {type: GraphQLID }},
             resolve(parent, args){
                 // code to get data from db
@@ -21,7 +21,7 @@ const RootQuery = new GraphQLObjectType({
             }
         },
         author: {
-            type: AuthorType,
+            type: Types.AuthorType,
             args: {id: { type: GraphQLID }},
             resolve(parent, args){
                 // code to get data from db
